@@ -129,3 +129,15 @@ canvas{
     .hud{ gap: 14px; }
     .btn-row{ flex-direction: column; }
 }
+
+/* --- Ekstra polish til canvas baggrund og knapper (valgfrit) --- */
+.stage-wrap{
+    background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.10));
+    backdrop-filter: blur(2px);
+}
+
+.controls .btn {
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.controls .btn:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(0,0,0,.18); }
+
