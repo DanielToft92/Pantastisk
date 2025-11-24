@@ -77,33 +77,38 @@
     const END_SHAKE_TIME = 0.6;
     const END_FORM_DELAY = 0.6;
 
-    /* ---------- Responsiv canvas (mobil = højere) ---------- */
+    /* ---------- Responsiv canvas (mobil / tablet / desktop) ---------- */
     function fitCanvas(){
         const parentW = canvas.parentElement.clientWidth;
 
-        // Brug højere (taller) forhold på mobil → mere vertikal plads
-        let baseRatio; // width / height
+        // Forhold mellem bredde/højde (width / height)
+        let baseRatio;
         if (window.innerWidth < 768) {
-            baseRatio = 0.8;   // mobil: højt lærred (height ≈ width / 0.8)
+            // Mobil: højt lærred (mere vertikal plads til spillet)
+            baseRatio = 0.8;                 // height ≈ width / 0.8
         } else if (window.innerWidth < 1024) {
-            baseRatio = 1.0;   // tablet: næsten kvadratisk
+            // Tablet: næsten kvadratisk
+            baseRatio = 1.0;
         } else {
-            baseRatio = 900/700; // desktop som før
+            // Desktop: Gør canvas lavere (bredere, mindre høj)
+            baseRatio = 900 / 480;           // height ≈ width / 1.875
         }
 
-        // Start fra bredden
+        // Udgangspunkt: fyld hele bredden
         let width  = parentW;
         let height = Math.round(width / baseRatio);
 
-        // Maks-højde (brug visualViewport på iOS for korrekt måling)
+        // Brug visualViewport på iOS hvis muligt
         const vh = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
         let maxH;
+
         if (window.innerWidth < 768) {
-            maxH = vh * 0.93;
+            maxH = vh * 0.93;      // mobil: må fylde det meste
         } else if (window.innerWidth < 1024) {
-            maxH = vh * 0.88;
+            maxH = vh * 0.88;      // tablet: stadig ret højt
         } else {
-            maxH = vh * 0.78;
+            // Desktop: må kun fylde ca. 55% af skærmens højde
+            maxH = vh * 0.7;      // tidligere 0.78 → langt lavere
         }
 
         // Hvis beregnet højde er større end max → skaler ned
@@ -112,19 +117,21 @@
             width  = Math.round(height * baseRatio);
         }
 
-        // Sæt CSS-størrelse
+        // Sæt CSS-størrelse (det du ser på skærmen)
         canvas.style.width  = width + "px";
         canvas.style.height = height + "px";
 
-        // Skarp rendering
+        // Skarp rendering (intern buffer)
         const dpr = window.devicePixelRatio || 1;
         canvas.width  = Math.round(width * dpr);
         canvas.height = Math.round(height * dpr);
         ctx.setTransform(dpr,0,0,dpr,0,0);
 
-        player.x = width/2;
+        // Pantman placering
+        player.x = width / 2;
         player.baseY = height - 10;
     }
+
     window.addEventListener("resize", fitCanvas, { passive:true });
     window.addEventListener("orientationchange", () => setTimeout(fitCanvas, 50), { passive:true });
     fitCanvas();

@@ -19,10 +19,12 @@
 *::after {
     box-sizing: border-box;
 }
+
 html,
 body {
     height: 100%;
 }
+
 body {
     margin: 0;
     font-family: "Baloo 2", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -30,6 +32,7 @@ body {
     background: linear-gradient(135deg, var(--brand-bg-start), var(--brand-bg-end));
     background-attachment: fixed;
 }
+
 .sr-only {
     position: absolute !important;
     height: 1px;
@@ -41,74 +44,152 @@ body {
     padding: 0;
     margin: -1px;
 }
+
+/* ================================================================= */
+/*                        PAGE CONTENT WRAPPER                       */
+/* ================================================================= */
+
 .page {
-    min-height: 100%;
     max-width: var(--content-max);
     margin: 0 auto;
-    padding-inline: clamp(16px, 2vw, 36px);
+    padding-inline: clamp(10px, 1.5vw, 26px); /* mindre margin i siderne */
 }
 
-/* ---------- Header: helt gennemsigtig, ingen blur/skygg e ---------- */
+/* ================================================================= */
+/*                          FULL-WIDTH NAVBAR                        */
+/* ================================================================= */
+
 .site-header {
     position: sticky;
     top: 0;
-    z-index: 50;
-    display: grid;
-    grid-template-columns: auto 1fr;
+    z-index: 100;
+
+    width: 100%;
+    padding: 18px clamp(12px, 3vw, 36px);
+
+    display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 14px 0 6px;
-    background: transparent; /* <— gennemsigtig */
-    backdrop-filter: none;
-    box-shadow: none; /* <— fjern effekter */
+    justify-content: space-between;
+
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.4);
 }
+
 .brand__logo {
-    height: clamp(44px, 5vw, 64px);
+    height: clamp(70px, 9vw, 110px);
     width: auto;
-    display: block;
+    transition: transform 0.2s ease;
 }
-.site-nav {
-    justify-self: end;
+
+.brand__logo:hover {
+    transform: scale(1.04);
 }
+
 .site-nav__list {
     list-style: none;
     display: flex;
-    gap: clamp(20px, 3vw, 48px);
+    gap: clamp(22px, 3vw, 48px);
     padding: 0;
     margin: 0;
 }
+
 .site-nav a {
-    font-weight: 800;
-    text-decoration: none;
-    font-size: var(--fs-nav);
+    font-weight: 900;
+    font-size: clamp(20px, 1.4vw, 28px);
     color: var(--text);
+    text-decoration: none;
+
+    padding: 8px 16px;
+    border-radius: 999px;
+
     transition:
-        transform 0.15s ease,
-        opacity 0.15s ease;
+            background 0.2s ease,
+            transform 0.2s ease,
+            opacity 0.2s ease;
 }
+
 .site-nav a:hover {
+    background: rgba(255, 255, 255, 0.75);
     transform: translateY(-2px);
-    opacity: 0.9;
 }
 
 .nav-toggle {
     display: none;
     background: transparent;
     border: 0;
-    padding: 8px;
-    margin-left: auto;
     cursor: pointer;
 }
+
 .nav-toggle__bar {
     display: block;
-    width: 28px;
-    height: 3px;
+    width: 32px;
+    height: 4px;
     background: var(--text);
-    margin: 5px 0;
+    margin: 6px 0;
     border-radius: 2px;
 }
 
-/* ---------- Hero: 2x2 for præcis placering ---------- */
+/* ================================================================= */
+/*                      FULL-WIDTH HERO BANNER                       */
+/* ================================================================= */
+
+.hero-banner {
+    width: 100%;
+    margin: 0;
+}
+
+.hero-banner__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ================================================================= */
+/*                 NY HEADER-SEKTION UNDER HERO                      */
+/* ================================================================= */
+
+.page-intro {
+    margin-top: clamp(20px, 3vw, 32px);
+    margin-bottom: clamp(24px, 3vw, 40px);
+    padding: clamp(18px, 2.5vw, 26px) clamp(18px, 3vw, 32px);
+
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: var(--shadow);
+    border: 4px solid #EEAF2B;
+
+    text-align: center;
+}
+
+.page-intro__eyebrow {
+    margin: 0 0 4px 0;
+    font-size: clamp(14px, 1.1vw, 18px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    color: #CB2C0E;
+}
+
+.page-intro__title {
+    margin: 0 0 8px 0;
+    font-size: clamp(28px, 3.4vw, 40px);
+    font-weight: 900;
+    color: #175087;
+}
+
+.page-intro__text {
+    margin: 0;
+    font-size: clamp(16px, 1.2vw + 8px, 22px);
+    max-width: 52ch;
+    margin-inline: auto;
+}
+
+/* ================================================================= */
+/*                    HERO GRID (planet, quotes osv.)                */
+/* ================================================================= */
+
 .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -121,21 +202,19 @@ body {
     min-height: 78vh;
 }
 
-/* Klode – venstre, roterer */
 .planet-wrap {
     grid-area: planet;
     align-self: start;
     justify-self: start;
     margin: clamp(6px, 2vw, 10px) 0 0 clamp(6px, 2vw, 24px);
 }
+
 .planet {
     width: clamp(180px, 26vw, 310px);
-    height: auto;
     animation: spin 28s linear infinite;
-    transform-origin: 50% 50%;
 }
 
-/* Øverste citat – højre, pink kant */
+/* Tekstbokse (bredere nu) */
 .quote {
     border-radius: var(--radius-xxl);
     box-shadow: var(--shadow);
@@ -143,98 +222,85 @@ body {
     line-height: 1.5;
     padding: clamp(16px, 2.5vw, 28px);
 }
+
 .quote--pink {
     grid-area: quoteTop;
     justify-self: end;
-    max-width: 560px;
+    max-width: 640px; /* tidligere 560px – nu bredere */
     background: var(--white);
     border: 8px solid var(--pink);
 }
 
-/* Nederste brede boks – venstre, hvid kant/mørk blå baggrund */
 .quote--blue {
     grid-area: quoteBottom;
     justify-self: start;
-    width: min(100%, 820px);
+    width: min(100%, 900px); /* tidligere 820px – nu bredere */
     background: var(--quote-blue);
     color: var(--quote-blue-text);
     border: 8px solid var(--white);
     border-radius: 24px;
 }
 
-/* Pantman nederst højre – under boksen, svæver */
 .pantman-wrap {
     grid-area: pantman;
     align-self: end;
     justify-self: end;
 }
 
-/* Større Pantman + hurtigere og mere tydelig svæv */
 .pantman {
-    width: clamp(160px, 18vw, 220px); /* gjort større */
+    width: clamp(160px, 18vw, 220px);
     height: auto;
-    animation: floatY 2.5s ease-in-out infinite; /* hurtigere bevægelse */
+    animation: floatY 2.5s ease-in-out infinite;
 }
 
-/* ---------- Animationer ---------- */
+/* ================================================================= */
+/*                          ANIMATIONER                              */
+/* ================================================================= */
+
 @keyframes floatY {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-25px); /* svæver mere op */
-    }
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-25px); }
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    to { transform: rotate(360deg); }
 }
 
-/* ---------- Responsivitet ---------- */
+/* ================================================================= */
+/*                          RESPONSIVE                               */
+/* ================================================================= */
 
-/* Tablet */
-@media (max-width: 992px) {
-    .quote--pink {
-        max-width: 520px;
-    }
-    .quote--blue {
-        width: min(100%, 760px);
-    }
-}
-
-/* Mobil – stack alt i kolonne, Pantman under blå boks */
 @media (max-width: 720px) {
-    .site-header {
-        grid-template-columns: auto auto;
-    }
+
     .nav-toggle {
         display: block;
     }
+
     .site-nav {
+        display: none;
         position: absolute;
         top: 100%;
         right: 12px;
-        background: rgba(255, 255, 255, 0.85);
+
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+
         border-radius: 16px;
-        padding: 10px 14px;
+        padding: 14px 18px;
         box-shadow: var(--shadow);
-        display: none;
     }
+
     .site-nav.open {
         display: block;
     }
+
     .site-nav__list {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
     }
+
     .site-nav a {
-        color: #052129;
+        font-size: 22px;
     }
 
     .hero {
@@ -245,22 +311,24 @@ body {
             "quoteBottom"
             "pantman";
     }
+
     .planet-wrap {
         justify-self: center;
         margin: 0;
     }
+
     .quote--pink,
     .quote--blue {
         justify-self: center;
         width: 100%;
         max-width: 620px;
     }
+
     .pantman-wrap {
         justify-self: center;
     }
 }
 
-/* Mindre mobil */
 @media (max-width: 420px) {
     .quote {
         border-width: 6px;

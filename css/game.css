@@ -179,15 +179,15 @@ canvas{
 
 /* Titel med pant-rød badge og gul kant */
 .overlay__card h2{
-    display:inline-block;
-    margin: 0 0 10px 0;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: var(--pant-red);
+    margin: 0 0 14px 0;
+    padding: 0;
     color: #fff;
-    letter-spacing:.3px;
-    border: 3px solid var(--pant-yellow);
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 900;
+    letter-spacing: .5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,.35); /* giver power */
 }
+
 
 /* Tekst i overlay – hvid */
 .overlay__card p,
@@ -221,6 +221,15 @@ canvas{
     gap:10px;
     margin-top:14px;
 }
+
+.submit-form .btn {
+    width: auto;
+    display: inline-block;
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
 .field{
     display:grid;
     gap:6px;
