@@ -147,7 +147,7 @@ body {
 }
 
 /* ================================================================= */
-/*                 NY HEADER-SEKTION UNDER HERO                      */
+/*                 HEADER-SEKTION UNDER HERO                         */
 /* ================================================================= */
 
 .page-intro {
@@ -192,11 +192,13 @@ body {
 
 .hero {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    grid-template-rows: auto auto;
+    /* NY LAYOUT: tekstboks oppe til venstre, Pantman oppe til højre,
+       globus nede til venstre, tekstboks nede til højre */
     grid-template-areas:
-        "planet quoteTop"
-        "quoteBottom pantman";
+        "quoteTop pantman"
+        "planet   quoteBottom";
     gap: clamp(18px, 3vw, 36px);
     padding: clamp(10px, 2.5vw, 24px) 0 clamp(40px, 6vw, 80px);
     min-height: 78vh;
@@ -204,7 +206,7 @@ body {
 
 .planet-wrap {
     grid-area: planet;
-    align-self: start;
+    align-self: center;
     justify-self: start;
     margin: clamp(6px, 2vw, 10px) 0 0 clamp(6px, 2vw, 24px);
 }
@@ -214,7 +216,7 @@ body {
     animation: spin 28s linear infinite;
 }
 
-/* Tekstbokse (bredere nu) */
+/* Tekstbokse (sammen stil som før) */
 .quote {
     border-radius: var(--radius-xxl);
     box-shadow: var(--shadow);
@@ -223,32 +225,39 @@ body {
     padding: clamp(16px, 2.5vw, 28px);
 }
 
+/* Øverste boks – nu til venstre */
 .quote--pink {
     grid-area: quoteTop;
-    justify-self: end;
-    max-width: 640px; /* tidligere 560px – nu bredere */
+    justify-self: start;
+    max-width: 640px;
     background: var(--white);
     border: 8px solid var(--pink);
 }
 
+/* Nederste boks – nu til højre */
 .quote--blue {
     grid-area: quoteBottom;
-    justify-self: start;
-    width: min(100%, 900px); /* tidligere 820px – nu bredere */
+    justify-self: end;
+    width: min(100%, 900px);
     background: var(--quote-blue);
     color: var(--quote-blue-text);
     border: 8px solid var(--white);
     border-radius: 24px;
 }
 
+/* ================================================================= */
+/*                          PANTMAN SPRITE                           */
+/* ================================================================= */
+
 .pantman-wrap {
     grid-area: pantman;
-    align-self: end;
-    justify-self: end;
+    align-self: center;
+    justify-self: center;
 }
 
+/* Større Pantman */
 .pantman {
-    width: clamp(160px, 18vw, 220px);
+    width: clamp(220px, 24vw, 320px);
     height: auto;
     animation: floatY 2.5s ease-in-out infinite;
 }
