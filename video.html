@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="da">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pantastisk – Videoen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css" />
+</head>
+
+<body>
+
+<!-- NAVBAR – samme som forsiden -->
+<header class="site-header" aria-label="Hoved">
+    <a class="brand" href="index.html" aria-label="Pantastisk forside">
+        <img src="images/logo2.png" alt="Pantastisk logo" class="brand__logo" />
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="sr-only">Åbn menu</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Primær navigation">
+        <ul class="site-nav__list">
+            <li><a href="index.html#red-verden">Red verden</a></li>
+            <li><a href="index.html#om-kampagnen">Om kampagnen</a></li>
+            <li><a href="game.html">Spillet</a></li>
+            <li><a href="video.html" aria-current="page">Videoen</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="page video-page">
+
+    <!-- Lille “hero” til videosiden -->
+    <section class="video-hero" aria-labelledby="video-title">
+        <div class="video-hero__badge">Ny film!</div>
+
+        <div class="video-hero__content">
+            <div class="video-hero__text">
+                <p class="page-intro__eyebrow">Pantastisk filmen</p>
+                <h1 id="video-title" class="page-intro__title">Se Pantmans kamp mod pant i naturen</h1>
+                <p class="page-intro__text">
+                    Pantman er Danmarks sejeste pant-helt, og i denne lille film viser han,
+                    hvorfor pant ikke hører hjemme i naturen — og hvor nemt det er at gøre en forskel.
+                    Filmen er lavet til børn og familier og er en sjov, kort introduktion til Pantastisk-universet.
+                </p>
+            </div>
+
+            <figure class="video-hero__pantman" aria-hidden="true">
+                <img src="images/pantman.png" alt="" />
+            </figure>
+        </div>
+    </section>
+
+    <!-- Hoved-layout: stor “tv-ramme” med video + små info-bobler -->
+    <main class="video-layout" aria-label="Pantastisk videoen">
+
+        <!-- Selve videoen i en farverig “tv-ramme” -->
+        <section class="video-wrapper" aria-label="Reklamefilmen">
+            <div class="video-frame">
+                <div class="video-frame__top">
+                    <span class="video-frame__dot video-frame__dot--red"></span>
+                    <span class="video-frame__dot video-frame__dot--yellow"></span>
+                    <span class="video-frame__dot video-frame__dot--green"></span>
+                    <span class="video-frame__label">Pantman filmen</span>
+                </div>
+
+                <div class="video-frame__inner">
+                    <video
+                            class="video-player"
+                            controls
+                            preload="metadata"
+                            poster="images/pantman-thumbnail.png"
+                    >
+                        <!-- Ret stien når I har den rigtige fil -->
+                        <source src="video/pantman-film.mp4" type="video/mp4">
+                        Din browser understøtter ikke video-tagget. Du kan downloade filmen
+                        og afspille den lokalt.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Barnlige info-kort ved siden af -->
+        <section class="video-bubbles" aria-label="Sådan kan I bruge filmen">
+            <article class="video-bubble video-bubble--blue">
+                <h2>Før filmen</h2>
+                <p>Tænk over, hvor pantet i jeres hverdag ender.
+                    Kommer det altid i skraldespanden — eller smutter det nogle gange andre steder hen?</p>
+            </article>
+
+            <article class="video-bubble video-bubble--green">
+                <h2>Efter filmen</h2>
+                <p>Tal om, hvorfor det er vigtigt at passe på naturen, og hvordan pant kan gøre en forskel,
+                    når det kommer det rigtige sted hen.</p>
+            </article>
+
+            <article class="video-bubble video-bubble--pink">
+                <h2>Ekstra sjov</h2>
+                <p>Hop videre til Pantman-spillet og se,
+                    hvor meget pant du kan redde — måske bliver du lige så sej som Pantman!</p>
+                <a href="game.html" class="video-sidecard__cta">
+                    Spil Pantman efter filmen
+                </a>
+            </article>
+        </section>
+
+    </main>
+
+</div>
+
+<footer class="site-footer">
+    <p>Pantastisk © 2025 – Sammen holder vi Danmark rent</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
