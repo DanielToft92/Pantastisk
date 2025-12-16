@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pantastisk – Spillet</title>
 
-    <!-- Samme font som forsiden -->
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
 
     <!-- Basestil + spil-stil -->
@@ -32,10 +31,9 @@
 
     <nav id="site-nav" class="site-nav" aria-label="Primær navigation">
         <ul class="site-nav__list">
-            <li><a href="index.html#red-verden">Red verden</a></li>
-            <li><a href="index.html#om-kampagnen">Om kampagnen</a></li>
             <li><a href="game.html" aria-current="page">Spillet</a></li>
             <li><a href="video.html">Videoen</a></li>
+            <li><a href="om-kampagnen.html">Om kampagnen</a></li>
         </ul>
     </nav>
 </header>
@@ -65,7 +63,6 @@
 
         <!-- Canvas wrapper -->
         <div class="stage-wrap">
-            <!-- HØJDEN ER NU 420 I STEDET FOR 580 -->
             <canvas id="game-canvas" width="900" height="420" aria-label="Spil lærred"></canvas>
 
             <!-- Pause badge -->
@@ -74,19 +71,18 @@
 
         <!-- Kontrolbar -->
         <div class="controls">
-            <button id="btn-start" class="btn btn-primary">Start</button>
-            <button id="btn-pause" class="btn">Pause</button>
-            <button id="btn-mute" class="btn" aria-pressed="false">Lyd fra</button>
+            <button id="btn-start" class="btn btn-primary">Start forfra</button>
+            <button id="btn-pause" class="btn">Pause/start</button>
         </div>
 
         <!-- Start overlay -->
         <section id="overlay-start" class="overlay shown" aria-labelledby="start-title" role="dialog" aria-modal="true">
             <div class="overlay__card">
                 <h2 id="start-title">Pantman: Fang panten!</h2>
-                <p>Bevæg Pantman <strong>vandret</strong> med musen eller fingeren og fang flasker/dåser. Undgå affald.</p>
+                <p>Bevæg Pantman <strong>vandret</strong> med musen eller fingeren og fang flasker/dåser. Undgå bomber.</p>
                 <ul class="list">
                     <li>✔ Flasker/Dåser = +10 point</li>
-                    <li>✖ Skrald (fx blade/kapper) = -1 liv</li>
+                    <li>✖ Bomber = -1 liv</li>
                     <li>⏱ 60 sekunder pr. spil</li>
                 </ul>
                 <button id="start-game" class="btn btn-primary btn-lg">Start spil</button>
@@ -117,11 +113,6 @@
     </main>
 </div> <!-- /page -->
 
-<footer class="site-footer">
-    <p>Pantastisk © 2025 – Sammen holder vi Danmark rent</p>
-</footer>
-
-<!-- Samme nav-script som på forsiden -->
 <script src="js/script.js"></script>
 <script src="js/game.js"></script>
 </body>

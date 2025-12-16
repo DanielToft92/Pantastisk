@@ -1,0 +1,314 @@
+/* ================================================================= */
+/*                 FORSIDE: FLYVENDE DÅSER I BAGGRUND                */
+/* ================================================================= */
+
+.floating-cans {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+
+    /* Ligger bag indhold, men stadig synlig */
+    z-index: 0;
+}
+
+/* Sørg for at rigtigt indhold altid ligger over dåserne */
+.site-header,
+.hero-banner,
+.page.home-page {
+    position: relative;
+    z-index: 2;
+}
+
+.floating-can {
+    position: absolute;
+    bottom: -140px; /* starter under skærmen */
+    width: 80px;
+    opacity: 0.55;
+    will-change: transform;
+    animation: floatUp linear infinite;
+}
+
+/* Flyv op og “forsvind” over skærmen */
+@keyframes floatUp {
+    from { transform: translateY(0) rotate(0deg); }
+    to   { transform: translateY(-130vh) rotate(180deg); }
+}
+
+/* Variation så de ikke flyver ens */
+.floating-can:nth-child(1) { left: 6%;  animation-duration: 10s; animation-delay: -1s; width: 70px; opacity: .35; }
+.floating-can:nth-child(2) { left: 18%; animation-duration: 14s; animation-delay: -6s; width: 85px; opacity: .55; }
+.floating-can:nth-child(3) { left: 35%; animation-duration: 12s; animation-delay: -9s; width: 65px; opacity: .40; }
+.floating-can:nth-child(4) { left: 55%; animation-duration: 16s; animation-delay: -3s; width: 90px; opacity: .50; }
+.floating-can:nth-child(5) { left: 72%; animation-duration: 13s; animation-delay: -8s; width: 75px; opacity: .45; }
+.floating-can:nth-child(6) { left: 88%; animation-duration: 11s; animation-delay: -5s; width: 80px; opacity: .40; }
+
+/* Respektér reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    .floating-can { animation: none; }
+}
+
+
+/* ================================================================= */
+/*                     NYT FORSIDE-LAYOUT (MOCKUP)                   */
+/* ================================================================= */
+
+.home-page {
+    /* Samme afstand fra hero → række og række → footer */
+    padding-block: 40px;
+}
+
+.home-layout {
+    /* Mindre side-padding – mere som video-siden */
+    padding-inline: clamp(4px, 1vw, 12px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+/* Nederste række: planet – tekstboble – controller */
+.home-bottom-row {
+    width: 100%;
+    max-width: 1300px;  /* lidt bredere – mindre margin fra siderne */
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1.6fr)
+        minmax(0, 1fr);
+    align-items: center;
+    justify-items: center;
+    gap: clamp(40px, 5vw, 80px); /* mere luft mellem elementerne */
+}
+
+/* PLANETEN */
+
+.home-planet {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.planet {
+    width: clamp(360px, 18vw, 220px);
+    height: auto;
+    animation: spin 28s linear infinite;
+    transform-origin: 50% 50%;
+}
+
+/* MIDTER-BOBBLE MED TEKST */
+
+.home-message {
+    position: relative;
+    padding: clamp(16px, 2vw, 22px) clamp(22px, 3vw, 32px);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.97);
+    border: 4px solid #EEAF2B;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.home-title {
+    margin: 0 0 8px 0;
+    font-size: clamp(20px, 2vw, 26px); /* ⬅️ lidt mindre end før */
+    font-weight: 900;
+    color: #175087;
+    line-height: 1.25;                 /* ⬅️ vigtig: bedre linjebrud */
+    max-width: 18ch;                   /* ⬅️ styrer hvor teksten breaker */
+    margin-inline: auto;               /* centrerer max-width */
+}
+
+.home-text {
+    margin: 0 auto;
+    font-size: clamp(15px, 1.1vw + 6px, 18px);
+    line-height: 1.5;
+    max-width: 40ch;
+    text-align: center;   /*  ⭐ Centerér brødteksten */
+}
+
+/* CONTROLLER – LINK TIL SPILLET */
+
+.home-controller-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.home-controller {
+    margin: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-controller__img {
+    display: block;
+    width: clamp(220px, 22vw, 320px);
+    height: auto;
+}
+
+/* CONTROLLER BUZZ-ANIMATION */
+
+.hero-controller {
+    animation: controllerBuzz 4s infinite;
+    transform-origin: center;
+}
+
+/* 0–50%: ryster, 50–100%: pause */
+@keyframes controllerBuzz {
+    0%, 50%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    5%  { transform: translate(-2px, 1px)  rotate(-2deg); }
+    10% { transform: translate(2px, -1px)  rotate(2deg); }
+    15% { transform: translate(-3px, 2px)  rotate(-2deg); }
+    20% { transform: translate(3px, -2px)  rotate(2deg); }
+    25% { transform: translate(-2px, 1px)  rotate(-1deg); }
+    30% { transform: translate(2px, -1px)  rotate(1deg); }
+    35% { transform: translate(-1px, 1px)  rotate(-1deg); }
+    40% { transform: translate(1px, -1px)  rotate(1deg); }
+    45% { transform: translate(0px, 0px)  rotate(0deg); }
+}
+
+/* Planet-spin */
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ================================================================= */
+/*                     FORSIDE – RESPONSIV LAYOUT                    */
+/* ================================================================= */
+
+@media (max-width: 900px) {
+
+    .home-layout {
+        padding-inline: 16px;
+    }
+
+    .home-bottom-row {
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+        text-align: center;
+        max-width: 520px;
+    }
+
+    .home-message {
+        max-width: 480px;
+    }
+
+    .home-planet {
+        order: -1;
+    }
+
+    .home-controller__badge {
+        font-size: 15px;
+    }
+}
+
+/* ================================================================= */
+/*   KUN FORSIDEN – Mindre margin i siderne og tættere layout        */
+/* ================================================================= */
+
+.page.home-page {
+    max-width: 1600px;              /* Gør forsiden bredere end globalt */
+    padding-inline: clamp(6px, 1vw, 18px);   /* Mindre side-padding */
+}
+
+.home-layout {
+    padding-inline: clamp(6px, 1vw, 16px);   /* Strammere layout kun på forsiden */
+}
+
+.home-bottom-row {
+    max-width: 1450px;              /* Brug mere af skærmen */
+    gap: clamp(24px, 4vw, 50px);     /* En smule mindre luft mellem elementerne */
+}
+
+/* ================================================================= */
+/*        EKSTRA RESPONSIV TILPASNING – SMÅ MOBILER (FORSIDE)        */
+/* ================================================================= */
+
+@media (max-width: 600px) {
+
+    .home-page {
+        padding-block: 24px 32px;
+    }
+
+    .home-bottom-row {
+        row-gap: 22px;
+        max-width: 480px;
+    }
+
+    .home-message {
+        padding: 14px 16px;
+    }
+
+    .home-text {
+        max-width: 32ch;
+    }
+
+    /* Gør planet og controller lidt mindre på meget små skærme */
+    .planet {
+        width: 220px;
+    }
+
+    .home-controller__img {
+        width: 240px;
+    }
+
+    .home-controller__badge {
+        font-size: 13px;
+        top: 26%;
+    }
+
+    /* Hero-billedet en smule lavere på små skærme */
+    .hero-banner {
+        max-height: 190px;
+    }
+
+    .hero-banner__img {
+        height: 190px;
+        object-fit: cover;
+    }
+}
+
+/* ================================================================= */
+/*          DESKTOP-TWEAKS – prøv at få alt på én skærm              */
+/* ================================================================= */
+
+@media (min-width: 1024px) {
+
+    /* Lavere hero-banner på store skærme */
+    .hero-banner {
+        max-height: 520px;
+    }
+
+    .hero-banner__img {
+        height: 520px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    /* Mindre vertikal luft omkring indholdet */
+    .home-page {
+        padding-block: 24px 20px; /* før var den højere */
+    }
+
+    /* Gør planet og controller en tand mindre */
+    .planet {
+        width: 260px;   /* justér hvis du vil have større/mindre */
+    }
+
+    .home-controller__img {
+        width: 260px;   /* matcher planeten lidt bedre */
+    }
+
+    /* Lidt mere kompakt tekstboble */
+    .home-message {
+        padding: 16px 24px;
+    }
+}
+
+
+

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="da">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pantastisk – Spillet</title>
+
+    <!-- Samme font som forsiden -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <!-- Basestil + spil-stil -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/game.css" />
+</head>
+
+<body>
+
+<!-- ========================================================= -->
+<!--                FULL-WIDTH HEADER / NAVBAR                 -->
+<!-- ========================================================= -->
+<header class="site-header" aria-label="Hoved">
+    <a class="brand" href="index.html" aria-label="Pantastisk forside">
+        <img src="images/logo2.png" alt="Pantastisk logo" class="brand__logo" />
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="sr-only">Åbn menu</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Primær navigation">
+        <ul class="site-nav__list">
+            <li><a href="index.html#red-verden">Red verden</a></li>
+            <li><a href="index.html#om-kampagnen">Om kampagnen</a></li>
+            <li><a href="game.html" aria-current="page">Spillet</a></li>
+            <li><a href="video.html">Videoen</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ========================================================= -->
+<!--                   PAGE CONTENT WRAPPER                    -->
+<!-- ========================================================= -->
+<div class="page">
+
+    <!-- SPIL ROOT -->
+    <main id="game-root" class="game-root" aria-label="Pant-catch spil">
+        <!-- HUD -->
+        <div class="hud" role="status" aria-live="polite">
+            <div class="hud__item">
+                <span class="hud__label">Score</span>
+                <span id="hud-score" class="hud__value">0</span>
+            </div>
+            <div class="hud__item">
+                <span class="hud__label">Liv</span>
+                <span id="hud-lives" class="hud__value">3</span>
+            </div>
+            <div class="hud__item">
+                <span class="hud__label">Tid</span>
+                <span id="hud-time" class="hud__value">60</span>
+            </div>
+        </div>
+
+        <!-- Canvas wrapper -->
+        <div class="stage-wrap">
+            <!-- HØJDEN ER NU 420 I STEDET FOR 580 -->
+            <canvas id="game-canvas" width="900" height="420" aria-label="Spil lærred"></canvas>
+
+            <!-- Pause badge -->
+            <div id="pause-badge" class="pause-badge" aria-hidden="true">PAUSE</div>
+        </div>
+
+        <!-- Kontrolbar -->
+        <div class="controls">
+            <button id="btn-start" class="btn btn-primary">Start</button>
+            <button id="btn-pause" class="btn">Pause</button>
+            <button id="btn-mute" class="btn" aria-pressed="false">Lyd fra</button>
+        </div>
+
+        <!-- Start overlay -->
+        <section id="overlay-start" class="overlay shown" aria-labelledby="start-title" role="dialog" aria-modal="true">
+            <div class="overlay__card">
+                <h2 id="start-title">Pantman: Fang panten!</h2>
+                <p>Bevæg Pantman <strong>vandret</strong> med musen eller fingeren og fang flasker/dåser. Undgå affald.</p>
+                <ul class="list">
+                    <li>✔ Flasker/Dåser = +10 point</li>
+                    <li>✖ Skrald (fx blade/kapper) = -1 liv</li>
+                    <li>⏱ 60 sekunder pr. spil</li>
+                </ul>
+                <button id="start-game" class="btn btn-primary btn-lg">Start spil</button>
+            </div>
+        </section>
+
+        <!-- Game Over overlay -->
+        <section id="overlay-gameover" class="overlay" aria-labelledby="over-title" role="dialog" aria-modal="true">
+            <div class="overlay__card">
+                <h2 id="over-title">Game Over</h2>
+                <p class="over-score">Din score: <strong id="final-score">0</strong></p>
+
+                <div class="btn-row">
+                    <button id="btn-restart" class="btn btn-primary">Spil igen</button>
+                    <button id="btn-submit" class="btn btn-accent">Indsend High Score</button>
+                </div>
+
+                <!-- Placeholder modal til high score (kan kobles til backend senere) -->
+                <form id="submit-form" class="submit-form" hidden>
+                    <label class="field">
+                        <span>Dit navn</span>
+                        <input id="player-name" type="text" placeholder="Skriv navn" maxlength="20" />
+                    </label>
+                    <button id="btn-send" type="button" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</div> <!-- /page -->
+
+<footer class="site-footer">
+    <p>Pantastisk © 2025 – Sammen holder vi Danmark rent</p>
+</footer>
+
+<!-- Samme nav-script som på forsiden -->
+<script src="js/script.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

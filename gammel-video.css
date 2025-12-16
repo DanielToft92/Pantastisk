@@ -1,0 +1,245 @@
+/* ================================================================= */
+/*                          VIDEO-SIDE                               */
+/* ================================================================= */
+
+.video-page {
+    padding-block: clamp(26px, 4vw, 40px) clamp(40px, 6vw, 72px);
+}
+
+/* Lille hero-område med Pantman-figur */
+.video-hero {
+    position: relative;
+    margin-bottom: clamp(26px, 4vw, 40px);
+    padding: clamp(18px, 2.5vw, 26px) clamp(22px, 3.5vw, 36px);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow);
+    border: 4px solid #EEAF2B;
+    overflow: hidden;
+}
+
+.video-hero__badge {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #d93a7a;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.video-hero__content {
+    display: grid;
+    grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.3fr);
+    gap: clamp(10px, 2vw, 24px);
+    align-items: center;
+}
+
+.video-hero__pantman {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.video-hero__pantman img {
+    width: clamp(180px, 20vw, 260px);
+    height: auto;
+    animation: floatY 2.8s ease-in-out infinite;
+}
+
+/* Typografi inde i video-hero (genbrug af forside-udtryk) */
+
+.page-intro__eyebrow {
+    margin: 0 0 4px 0;
+    font-size: clamp(12px, 1.1vw, 16px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    color: #CB2C0E;
+}
+
+.page-intro__title {
+    margin: 0 0 8px 0;
+    font-size: clamp(24px, 3.4vw, 36px);
+    font-weight: 900;
+    color: #175087;
+}
+
+.page-intro__text {
+    margin: 0;
+    font-size: clamp(15px, 1.2vw + 6px, 20px);
+    max-width: 52ch;
+}
+
+/* Hoved-layout: tv-ramme + bobler */
+.video-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+    gap: clamp(26px, 4vw, 40px);
+    align-items: flex-start;
+}
+
+/* “TV-ramme” omkring videoen */
+.video-wrapper {
+    background: transparent;
+}
+
+.video-frame {
+    border-radius: 32px;
+    background: linear-gradient(135deg, #ffa84c, #ff5f6d);
+    padding: 14px;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+}
+
+/* Topbaren på video-rammen */
+.video-frame__top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px 8px;
+}
+
+/* De tre farvede prikker */
+.video-frame__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffffffaa;
+}
+
+.video-frame__dot--red { background: #ff5f6d; }
+.video-frame__dot--yellow { background: #ffd65b; }
+.video-frame__dot--green { background: #6fd08b; }
+
+/* Overskrift centreret i topbaren */
+.video-frame__label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+}
+
+.video-frame__inner {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #000;
+    padding: 0;
+}
+
+.video-player {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* Barnlige bobler til tekst/CTA */
+.video-bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14px, 2.2vw, 18px);
+}
+
+.video-bubble {
+    border-radius: 24px;
+    padding: 14px 16px;
+    color: #0b1b1f;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.video-bubble h2 {
+    margin: 0 0 4px 0;
+    font-size: 17px;
+}
+
+.video-bubble p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* farver */
+.video-bubble--blue {
+    background: #c9e4f3;
+    border: 3px solid #175087;
+}
+
+.video-bubble--green {
+    background: #a7c09c;
+    border: 3px solid #317c3a;
+}
+
+.video-bubble--pink {
+    background: #ffe2e7;
+    border: 3px solid #d93a7a;
+}
+
+/* CTA-knap */
+.video-sidecard__cta {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #d93a7a;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 14px;
+    box-shadow: var(--shadow);
+    transition:
+            transform 0.15s ease,
+            box-shadow 0.15s ease,
+            background 0.15s ease;
+}
+
+.video-sidecard__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.16);
+    background: #c22f68;
+}
+
+/* RESPONSIV – tablet/mobil */
+@media (max-width: 960px) {
+    .video-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .video-bubbles {
+        order: 2;
+    }
+}
+
+@media (max-width: 720px) {
+    .video-hero__content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .video-hero__pantman {
+        justify-content: center;
+    }
+
+    .video-hero__badge {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Lille flyde-animation til Pantman i hero */
+@keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-25px); }
+}

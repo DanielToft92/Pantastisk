@@ -4,21 +4,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pantastisk – Red verden</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
 </head>
 
 <body>
 
-<div class="floating-cans">
-    <img src="images/dåselyn.png" class="floating-can">
-    <img src="images/dåselyn.png" class="floating-can">
-    <img src="images/dåselyn.png" class="floating-can">
-    <img src="images/dåselyn.png" class="floating-can">
-    <img src="images/dåselyn.png" class="floating-can">
-    <img src="images/dåselyn.png" class="floating-can">
+<!-- FLYVENDE DÅSER I BAGGRUNDEN (KUN FORSIDEN) -->
+<div class="floating-cans" aria-hidden="true">
+    <img src="images/dåse.png" class="floating-can" alt="">
+    <img src="images/dåse2.png" class="floating-can" alt="">
+    <img src="images/dåse3.png" class="floating-can" alt="">
+    <img src="images/dåse4.png" class="floating-can" alt="">
+    <img src="images/dåse.png" class="floating-can" alt="">
+    <img src="images/dåse2.png" class="floating-can" alt="">
 </div>
-
 
 <!-- ========================================================= -->
 <!--                FULL-WIDTH HEADER / NAVBAR                 -->
@@ -37,105 +39,65 @@
 
     <nav id="site-nav" class="site-nav" aria-label="Primær navigation">
         <ul class="site-nav__list">
-            <li><a href="#red-verden">Red verden</a></li>
-            <li><a href="#om-kampagnen">Om kampagnen</a></li>
             <li><a href="game.html">Spillet</a></li>
             <li><a href="video.html">Videoen</a></li>
+            <li><a href="om-kampagnen.html">Om kampagnen</a></li>
         </ul>
     </nav>
 </header>
 
 <!-- ========================================================= -->
-<!--          FULL-WIDTH HERO-BANNER (KUN BILLEDET)            -->
+<!--          FULL-WIDTH HERO-BANNER (LOGO + DÅSEBAGGRUND)     -->
 <!-- ========================================================= -->
 <section class="hero-banner" aria-label="Pantastisk hero banner">
     <img
-            src="images/herobanner5.png"
-            alt="Pantastisk – baggrund med dåser og flasker og stort logo"
+            src="images/herobanner6.png"
+            alt="Pantastisk – Pantman logo med farverig dåsebaggrund"
             class="hero-banner__img"
     />
 </section>
 
 <!-- ========================================================= -->
-<!--                   PAGE CONTENT STARTER                    -->
+<!--                     NY FORSIDE-OPBYGNING                  -->
 <!-- ========================================================= -->
-<div class="page">
+<div class="page home-page">
 
-    <!-- dekorativt boble-lag bag indholdet -->
-    <div class="page-bg-bubbles" aria-hidden="true"></div>
+    <main class="home-layout" id="red-verden" aria-label="Pantastisk univers">
 
-    <!-- Intro-boks under hero -->
-    <section class="page-intro" aria-labelledby="intro-title">
-        <p class="page-intro__eyebrow">Pantastisk kampagnen</p>
-        <h1 id="intro-title" class="page-intro__title">Hjælp Pantman med at holde Danmark rent</h1>
-        <p class="page-intro__text">
-            Sammen lærer vi børn at pante flasker og dåser, i stedet for at smide dem i naturen.
-            Spil, leg og læring gør det nemt at få gode vaner – allerede fra 0. til 2. klasse.
-        </p>
-    </section>
-
-    <!-- MAIN layout – dåse + Pantman / klode + controller -->
-    <main class="front-layout" id="red-verden" aria-label="Pantastisk univers">
-
-        <!-- ØVERSTE RÆKKE: DÅSE MED LYN + STOR PANTMAN -->
-        <section class="front-row front-row--top">
-            <!-- Dåse med lyn + tekst inden i -->
-            <figure class="can-card" aria-labelledby="can-text-title">
-                <img src="images/dåselyn.png" alt="Dåse med lyn og tekstfelt" class="can-card__img" />
-                <figcaption class="can-card__inner">
-                    <h2 id="can-text-title" class="front-text-title">
-                        “Drop det rigtigt – for en renere fremtid”
-                    </h2>
-                    <p class="front-text-body">
-                        Hver flaske og dåse tæller.<br>
-                        Hjælp med at holde naturen fri for skrald og pant, så vi<br>
-                        sammen kan passe på verden omkring os.
-                    </p>
-                </figcaption>
-            </figure>
-
-            <!-- Stor Pantman der svæver -->
-            <figure class="pantman-hero-wrap" aria-label="Pantman superhelt">
-                <img src="images/pantman.png" alt="Pantman holder en dåse" class="pantman-hero" />
-            </figure>
-        </section>
-
-        <!-- NEDERSTE RÆKKE: KLODE + CONTROLLER MED TEKST -->
-        <section class="front-row front-row--bottom">
-            <!-- Roterende klode -->
-            <figure class="planet-front" aria-label="Roterende klode">
+        <section class="home-bottom-row">
+            <!-- PLANETEN TIL VENSTRE -->
+            <figure class="home-planet" aria-label="Globus der drejer rundt">
                 <img src="images/globe.png" alt="Globus med smilende ansigt" class="planet" />
             </figure>
 
-            <!-- Controller med tekst inde i -->
-            <figure class="controller-card" aria-labelledby="controller-text-title">
-                <img src="images/controller.png" alt="Spilcontroller med tekstfelt" class="controller-card__img" />
-                <figcaption class="controller-card__inner">
-                    <h2 id="controller-text-title" class="front-text-title">
-                        Spil med og hjælp Pantman
-                    </h2>
-                    <p class="front-text-body">
-                        Prøv det super seje Pantman spil,<br>
-                        og hjælp Pantman med at fange panten<br>
-                        og redde Danmarks natur!
-                    </p>
-                </figcaption>
-            </figure>
+            <!-- MIDTER-BOBBLE MED TEKST -->
+            <section class="home-message" aria-labelledby="home-title">
+                <h1 id="home-title" class="home-title">
+                    Hjælp Pantman med at holde Danmark rent
+                </h1>
+                <p class="home-text">
+                    Sammen lærer vi børn og familier at skille sig af, med flasker og dåser i stedet for at
+                    smide dem i naturen. Spil, leg og video gør det nemt at få gode
+                    vaner – hver eneste dåse/flaske tæller.
+                </p>
+            </section>
+
+            <!-- CONTROLLER TIL HØJRE (LINK TIL SPILLET) -->
+            <a href="game.html" class="home-controller-link" aria-label="Gå til Pantman spillet">
+                <figure class="home-controller" aria-hidden="true">
+                    <img src="images/controller.png" alt="" class="home-controller__img hero-controller" />
+                </figure>
+            </a>
         </section>
 
     </main>
 
-    <!-- Placeholder sektioner -->
+    <!-- SEMANTISKE ANKER-SEKTIONER (SKJULT, TIL LINKS I NAV) -->
     <section id="om-kampagnen" class="sr-only" aria-hidden="true"></section>
     <section id="spillet" class="sr-only" aria-hidden="true"></section>
     <section id="videoen" class="sr-only" aria-hidden="true"></section>
 
 </div> <!-- /page content -->
-
-<footer class="site-footer">
-    <p>Pantastisk © 2025 – Sammen holder vi Danmark rent</p>
-</footer>
-
 
 <script src="js/script.js"></script>
 </body>

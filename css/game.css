@@ -1,41 +1,17 @@
-:root{
-    --brand-bg-start:#a9d7f5;
-    --brand-bg-end:#6fd08b;
-    --text:#0b1b1f;
-    --white:#fff;
-    --dark:#1d3a48;
-    --pink:#d93a7a;
-    --green:#2cbf6e;
-    --shadow: 0 10px 28px rgba(0,0,0,.15);
-    --radius: 16px;
-
-    /* Pantman farver */
-    --pant-red:#CB2C0E;      /* kappe + sko */
-    --pant-red-dark:#9e230b;
-    --pant-red-darker:#7c1c08;
-
-    --pant-yellow:#EEAF2B;   /* gul outline */
-}
-
-/* Baggrund matcher forsiden */
-body{
-    background: linear-gradient(135deg, var(--brand-bg-start), var(--brand-bg-end));
-    background-attachment: fixed;
-    font-family:"Baloo 2", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
-
-/* Aktiv link i nav */
-.site-nav a.is-active{ text-decoration: underline; }
+/* ================================================================= */
+/*                     PANTMAN SPIL – GAME.CSS                       */
+/*      Kun spil-layout og UI. Fælles ting ligger i global.css       */
+/* ================================================================= */
 
 /* Game root layout */
-.game-root{
+.game-root {
     display: grid;
     gap: clamp(16px, 2vw, 24px);
     padding: clamp(8px, 2vw, 24px) 0 clamp(28px, 6vw, 64px);
 }
 
 /* HUD */
-.hud{
+.hud {
     display: grid;
     grid-auto-flow: column;
     justify-content: center;
@@ -43,63 +19,80 @@ body{
     font-weight: 800;
     text-transform: uppercase;
 }
-.hud__item{ display:flex; gap:10px; align-items:baseline; }
-.hud__label{ opacity:.8; font-size: clamp(14px,1.2vw,18px); }
-.hud__value{ font-size: clamp(20px,2.5vw,32px); }
+
+.hud__item {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+}
+
+.hud__label {
+    opacity: .8;
+    font-size: clamp(14px, 1.2vw, 18px);
+}
+
+.hud__value {
+    font-size: clamp(20px, 2.5vw, 32px);
+}
 
 /* Canvas */
-.stage-wrap{
+.stage-wrap {
     margin: 0 auto;
     position: relative;
     width: min(100%, 1000px);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(0,0,0,.15);
     overflow: hidden;
     background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.10));
     backdrop-filter: blur(2px);
 }
-canvas{
+
+canvas {
     display: block;
     width: 100%;
     height: auto;
 }
 
 /* Pause badge */
-.pause-badge{
+.pause-badge {
     position: absolute;
-    top: 16px; right: 16px;
+    top: 16px;
+    right: 16px;
     padding: 6px 10px;
-    background: var(--pant-red);
+    background: #CB2C0E; /* pant-rød */
     color: #fff;
     border-radius: 999px;
     font-weight: 700;
     letter-spacing: .5px;
-    display:none;
-    box-shadow: var(--shadow);
+    display: none;
+    box-shadow: 0 10px 28px rgba(0,0,0,.15);
 }
-.pause-badge.show{ display:block; }
+
+.pause-badge.show {
+    display: block;
+}
 
 /* ===================== */
 /*       KNAPPER         */
 /* ===================== */
 
-.controls{
-    display:flex;
-    justify-content:center;
+.controls {
+    display: flex;
+    justify-content: center;
     gap: 12px;
 }
 
 /* Alle knapper i spillet */
-.game-root .btn{
+.game-root .btn {
     -webkit-tap-highlight-color: transparent;
-    border: 3px solid var(--pant-yellow);
+    border: 3px solid #EEAF2B;              /* pant-gul */
     border-radius: 999px;
     padding: 10px 18px;
     font-weight: 800;
     cursor: pointer;
     color: #fff;
-    background: var(--pant-red);
-    box-shadow: var(--shadow);
+    background: #CB2C0E;                    /* pant-rød */
+    box-shadow: 0 10px 28px rgba(0,0,0,.15);
     transition:
             transform .06s ease,
             filter .15s ease,
@@ -108,43 +101,46 @@ canvas{
             border-color .2s ease;
 }
 
-.game-root .btn:hover{
-    background: var(--pant-red-dark);
-    border-color: var(--pant-yellow);
+.game-root .btn:hover {
+    background: #9e230b;                    /* mørkere rød */
+    border-color: #EEAF2B;
 }
 
-.game-root .btn:active{
+.game-root .btn:active {
     transform: translateY(1px);
-    background: var(--pant-red-darker);
+    background: #7c1c08;                    /* endnu mørkere rød */
 }
 
-.game-root .btn:focus-visible{
+.game-root .btn:focus-visible {
     outline: 3px solid rgba(238,175,43,.5);
     outline-offset: 2px;
 }
 
-.game-root .btn-lg{ padding: 14px 22px; }
+.game-root .btn-lg {
+    padding: 14px 22px;
+}
 
 .game-root .btn-primary,
-.game-root .btn-accent{
-    background: var(--pant-red);
-    color:#fff;
-    border-color: var(--pant-yellow);
+.game-root .btn-accent {
+    background: #CB2C0E;
+    color: #fff;
+    border-color: #EEAF2B;
 }
 
 /* Lidt ekstra hover-polish specifikt på kontrol-knapper */
 .controls .btn {
     transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
 }
+
 .controls .btn:hover {
     transform: translateY(-1px);
     box-shadow: 0 12px 28px rgba(0,0,0,.18);
 }
 
 /* Mute-knap aktiv */
-.game-root #btn-mute[aria-pressed="true"]{
-    background: var(--pant-red-dark);
-    border-color: var(--pant-yellow);
+.game-root #btn-mute[aria-pressed="true"] {
+    background: #9e230b;
+    border-color: #EEAF2B;
     box-shadow: inset 0 2px 0 rgba(0,0,0,.12);
 }
 
@@ -152,7 +148,7 @@ canvas{
 /*        OVERLAYS       */
 /* ===================== */
 
-.overlay{
+.overlay {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,.35);
@@ -161,15 +157,18 @@ canvas{
     justify-content: center;
     padding: 20px;
 }
-.overlay.shown{ display: flex; }
+
+.overlay.shown {
+    display: flex;
+}
 
 /* Blå Pantman baggrund + gul outline + hvid tekst */
-.overlay__card{
+.overlay__card {
     width: min(96vw, 620px);
     border-radius: 24px;
 
     background: #175087;                 /* Pantman blå */
-    border: 8px solid var(--pant-yellow);/* gul kant */
+    border: 8px solid #EEAF2B;           /* gul kant */
 
     box-shadow: 0 16px 44px rgba(0,0,0,.18);
     padding: clamp(18px, 3vw, 28px);
@@ -177,49 +176,49 @@ canvas{
     color: #fff;                         /* alt tekst inde i kortet er hvid */
 }
 
-/* Titel med pant-rød badge og gul kant */
-.overlay__card h2{
+/* Titel */
+.overlay__card h2 {
     margin: 0 0 14px 0;
     padding: 0;
     color: #fff;
     font-size: clamp(26px, 4vw, 36px);
     font-weight: 900;
     letter-spacing: .5px;
-    text-shadow: 0 2px 4px rgba(0,0,0,.35); /* giver power */
+    text-shadow: 0 2px 4px rgba(0,0,0,.35);
 }
-
 
 /* Tekst i overlay – hvid */
 .overlay__card p,
 .overlay__card .list,
 .overlay__card li,
 .overlay__card span,
-.overlay__card strong{
+.overlay__card strong {
     color: #fff;
 }
 
-.list{
-    text-align:left;
+.list {
+    text-align: left;
     margin: 12px auto 18px;
     width: fit-content;
 }
-.list li::marker{
-    color: var(--pant-yellow);
+
+.list li::marker {
+    color: #EEAF2B;
 }
 
 /* Knap-række */
-.btn-row{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    margin-top:10px;
+.btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
 }
 
 /* Highscore form */
-.submit-form{
-    display:grid;
-    gap:10px;
-    margin-top:14px;
+.submit-form {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
 }
 
 .submit-form .btn {
@@ -230,25 +229,35 @@ canvas{
     padding-right: 32px;
 }
 
-.field{
-    display:grid;
-    gap:6px;
-    text-align:left;
+.field {
+    display: grid;
+    gap: 6px;
+    text-align: left;
 }
-.field input{
+
+.field input {
     padding: 10px 12px;
     border-radius: 10px;
-    border: 2px solid var(--pant-yellow);
+    border: 2px solid #EEAF2B;
     outline: none;
-    background:#fff;
+    background: #fff;
 }
-.field input:focus{
-    border-color: var(--pant-red);
+
+.field input:focus {
+    border-color: #CB2C0E;
     box-shadow: 0 0 0 4px rgba(203,44,14,.18);
 }
 
-/* Responsivitet */
-@media (max-width: 720px){
-    .hud{ gap: 14px; }
-    .btn-row{ flex-direction: column; }
+/* ===================== */
+/*      RESPONSIVITET    */
+/* ===================== */
+
+@media (max-width: 720px) {
+    .hud {
+        gap: 14px;
+    }
+
+    .btn-row {
+        flex-direction: column;
+    }
 }

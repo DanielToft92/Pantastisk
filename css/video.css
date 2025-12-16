@@ -1,0 +1,281 @@
+/* ================================================================= */
+/*                          VIDEO-SIDE                               */
+/* ================================================================= */
+
+.video-page {
+    padding-block: clamp(26px, 4vw, 40px) clamp(40px, 6vw, 72px);
+}
+
+/* ================================================================= */
+/*       HOVED-LAYOUT: INFO-BOKS (VENSTRE) + VIDEO (HØJRE)           */
+/* ================================================================= */
+
+.video-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    gap: clamp(26px, 4vw, 40px);
+    align-items: stretch;
+
+    padding: clamp(18px, 2.5vw, 26px) clamp(22px, 3.5vw, 36px);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 4px solid #EEAF2B;
+    box-shadow: var(--shadow);
+}
+
+/* INFO-BOKS (tidligere hero-tekst) */
+
+.video-info {
+    padding-right: clamp(10px, 2vw, 24px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.video-info__eyebrow {
+    margin: 0 0 4px 0;
+    font-size: clamp(12px, 1.1vw, 16px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+    color: #CB2C0E;
+}
+
+.video-info__title {
+    margin: 0 0 10px 0;
+    font-size: clamp(24px, 3.2vw, 36px);
+    font-weight: 900;
+    color: #175087;
+}
+
+.video-info__text {
+    margin: 0;
+    font-size: clamp(15px, 1.2vw + 6px, 20px);
+    max-width: 52ch;
+    line-height: 1.6;
+}
+
+/* ================================================================= */
+/*                    VIDEO – “TV-RAMME”                             */
+/* ================================================================= */
+
+.video-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-frame {
+    width: 100%;
+    border-radius: 32px;
+    background: linear-gradient(135deg, #ffa84c, #ff5f6d);
+    padding: 14px;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+    max-width: 720px;
+}
+
+/* Topbaren på video-rammen */
+.video-frame__top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px 8px;
+}
+
+/* De tre farvede prikker */
+.video-frame__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffffffaa;
+}
+
+.video-frame__dot--red { background: #ff5f6d; }
+.video-frame__dot--yellow { background: #ffd65b; }
+.video-frame__dot--green { background: #6fd08b; }
+
+/* Overskrift centreret i topbaren */
+.video-frame__label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* vigtig: så den aldrig kan stikke ud */
+    max-width: calc(100% - 90px); /* plads til de 3 prikker */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+
+    font-size: clamp(16px, 3.2vw, 30px); /* responsiv */
+    line-height: 1;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.video-frame__inner {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #000;
+    padding: 0;
+}
+
+.video-player {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* ================================================================= */
+/*            BOBLER UNDER LAYOUTET (3 I EN RÆKKE)                   */
+/* ================================================================= */
+
+.video-bubbles__title {
+    margin: clamp(24px, 3vw, 32px) 0 8px;
+    font-size: 20px;
+    font-weight: 900;
+    color: #175087;
+    text-align: center;
+}
+
+.video-bubbles {
+    margin-top: clamp(28px, 4vw, 40px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(16px, 3vw, 32px);
+}
+
+.video-bubble {
+    border-radius: 24px;
+    padding: 14px 18px;
+    color: #0b1b1f;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    min-width: 220px;
+    max-width: 280px;
+    background: #ffffff;
+}
+
+.video-bubble h2 {
+    margin: 0 0 6px 0;
+    font-size: 17px;
+}
+
+.video-bubble p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* farver */
+.video-bubble--blue {
+    background: #c9e4f3;
+    border: 3px solid #175087;
+}
+
+.video-bubble--green {
+    background: #a7c09c;
+    border: 3px solid #317c3a;
+}
+
+.video-bubble--pink {
+    background: #ffe2e7;
+    border: 3px solid #d93a7a;
+}
+
+/* CTA-knap */
+.video-sidecard__cta {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #d93a7a;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 14px;
+    box-shadow: var(--shadow);
+    transition:
+            transform 0.15s ease,
+            box-shadow 0.15s ease,
+            background 0.15s ease;
+}
+
+.video-sidecard__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.16);
+    background: #c22f68;
+}
+
+/* ================================================================= */
+/*                      RESPONSIV LAYOUT                             */
+/* ================================================================= */
+
+@media (max-width: 960px) {
+    .video-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .video-wrapper {
+        order: -1; /* Video øverst på smallere skærme, hvis du vil det – fjern ellers denne linje */
+    }
+}
+
+@media (max-width: 720px) {
+    .video-page {
+        padding-block: 22px 44px;
+    }
+
+    .video-info {
+        padding: 16px 18px;
+    }
+
+    .video-bubbles {
+        justify-content: center;
+    }
+
+    .video-bubble {
+        max-width: 100%;
+    }
+}
+
+/* ================================================================= */
+/*    EKSTRA RESPONSIV TILPASNING – SMÅ MOBILER (VIDEO-SIDE)         */
+/* ================================================================= */
+
+@media (max-width: 480px) {
+
+    .video-page {
+        padding-block: 18px 32px;
+    }
+
+    .video-layout {
+        gap: 18px;
+        padding: 14px 14px;
+    }
+
+    .video-frame {
+        max-width: 100%;
+    }
+
+    .video-bubbles {
+        gap: 14px;
+    }
+
+    .video-bubble {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+
