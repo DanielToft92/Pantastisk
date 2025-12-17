@@ -7,7 +7,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
 
-    <!-- Basestil + spil-stil -->
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/game.css" />
 </head>
@@ -43,9 +42,7 @@
 <!-- ========================================================= -->
 <div class="page">
 
-    <!-- SPIL ROOT -->
     <main id="game-root" class="game-root" aria-label="Pant-catch spil">
-        <!-- HUD -->
         <div class="hud" role="status" aria-live="polite">
             <div class="hud__item">
                 <span class="hud__label">Score</span>
@@ -61,21 +58,17 @@
             </div>
         </div>
 
-        <!-- Canvas wrapper -->
         <div class="stage-wrap">
             <canvas id="game-canvas" width="900" height="420" aria-label="Spil lærred"></canvas>
 
-            <!-- Pause badge -->
             <div id="pause-badge" class="pause-badge" aria-hidden="true">PAUSE</div>
         </div>
 
-        <!-- Kontrolbar -->
         <div class="controls">
             <button id="btn-start" class="btn btn-primary">Start forfra</button>
             <button id="btn-pause" class="btn">Pause/start</button>
         </div>
 
-        <!-- Start overlay -->
         <section id="overlay-start" class="overlay shown" aria-labelledby="start-title" role="dialog" aria-modal="true">
             <div class="overlay__card">
                 <h2 id="start-title">Pantman: Fang panten!</h2>
@@ -89,7 +82,6 @@
             </div>
         </section>
 
-        <!-- Game Over overlay -->
         <section id="overlay-gameover" class="overlay" aria-labelledby="over-title" role="dialog" aria-modal="true">
             <div class="overlay__card">
                 <h2 id="over-title">Game Over</h2>
@@ -100,7 +92,6 @@
                     <button id="btn-submit" class="btn btn-accent">Indsend High Score</button>
                 </div>
 
-                <!-- Placeholder modal til high score (kan kobles til backend senere) -->
                 <form id="submit-form" class="submit-form" hidden>
                     <label class="field">
                         <span>Dit navn</span>
@@ -111,7 +102,7 @@
             </div>
         </section>
     </main>
-</div> <!-- /page -->
+</div>
 
 <script src="js/script.js"></script>
 <script src="js/game.js"></script>

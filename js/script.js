@@ -1,6 +1,6 @@
-// ---------------------
+
 // BURGER MENU
-// ---------------------
+
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('#site-nav');
 if (toggle && nav) {
@@ -10,9 +10,9 @@ if (toggle && nav) {
     });
 }
 
-// ---------------------
+
 // FLYVENDE DÅSER FRA FOOTER (MED TILFÆLDIG STRØM)
-// ---------------------
+
 const cans = document.querySelectorAll(".floating-can");
 const footer = document.querySelector(".site-footer");
 
