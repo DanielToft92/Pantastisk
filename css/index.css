@@ -310,5 +310,12 @@
     }
 }
 
+/* FIX: burger-menu skal altid kunne klikkes på forsiden */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+}
+
 
 
